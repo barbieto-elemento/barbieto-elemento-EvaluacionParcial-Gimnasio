@@ -1,0 +1,34 @@
+package com.example.powerfit
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_main)
+
+        val edtCantidad = findViewById<EditText>(R.id.edtCantidad)
+        val btnComprar = findViewById<Button>(R.id.btnComprar)
+        val btnCarrito = findViewById<Button>(R.id.btnCarrito)
+
+        btnComprar.setOnClickListener {
+            val cantidad = edtCantidad.text.toString()
+
+            if (cantidad.isEmpty()) {
+                Toast.makeText(this, "Ingrese una cantidad", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Compra realizada: $cantidad", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnCarrito.setOnClickListener {
+            Toast.makeText(this, "Producto agregado al carrito", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
